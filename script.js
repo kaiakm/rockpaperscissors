@@ -50,6 +50,9 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
-const playerSelection = "PaPeR";
-const computerSelection = getComputerChoice();
-console.log(playRound(playerSelection, computerSelection));
+function game(choice) {
+    choice = prompt('Rock, paper, or scissors?')
+    return playRound(choice, getComputerChoice());
+}
+
+console.log(game());
