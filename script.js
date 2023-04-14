@@ -1,17 +1,55 @@
-console.log('Hello World!');
-
 function getComputerChoice() {
-    result = Math.floor(Math.random() * 3) + 1;
+    const result = Math.floor(Math.random() * 3);
     
-    if (result === 1) {
-        console.log('rock');
+    if (result === 0) {
+        return 'rock';
+    } else if (result === 1) {
+        return 'paper';
     } else if (result === 2) {
-        console.log('paper');
-    } else if (result === 3) {
-        console.log('scissors');
+        return 'scissors';
     } else {
 
     }
 }
 
-getComputerChoice();
+
+function playRound(playerSelection, computerSelection) {
+    if (playerSelection.toLowerCase() === 'rock') {
+        if (computerSelection === 'rock') {
+            return 'It\'s a tie!';
+        } else if (computerSelection ==='paper') {
+            return 'You lose! Paper beats rock.';
+        } else if (computerSelection === 'scissors') {
+            return 'You win! Rock beats scissors.';
+        } else {
+
+        }
+    } else if (playerSelection.toLowerCase() === 'paper') {
+            if (computerSelection === 'rock') {
+                return 'You win! Paper beats rock.';
+            } else if (computerSelection ==='paper') {
+                return 'It\'s a tie!';
+            } else if (computerSelection === 'scissors') {
+                return 'You lose! Scissors beats paper.';
+            } else {
+
+            }
+    } else if (playerSelection.toLowerCase() === 'scissors') {
+            if (computerSelection === 'rock') {
+                return 'You lose! Rock beats scissors.';
+            } else if (computerSelection ==='paper') {
+                return 'You win! Scissors beats paper.';
+            } else if (computerSelection === 'scissors') {
+                return 'It\'s a tie!';
+            } else {
+
+            }
+        
+    } else {
+
+    }
+}
+
+const playerSelection = "PaPeR";
+const computerSelection = getComputerChoice();
+console.log(playRound(playerSelection, computerSelection));
