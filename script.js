@@ -10,8 +10,6 @@ function getComputerChoice() {
         return 'paper';
     } else if (result === 2) {
         return 'scissors';
-    } else {
-
     }
 }
 
@@ -28,9 +26,8 @@ function playRound(playerSelection, computerSelection) {
         } else if (computerSelection === 'scissors') {
             playerScore++;
             return 'I picked scissors. You win!';
-        } else {
-
         }
+
     } else if (playerSelection.toLowerCase() === 'paper') {
             if (computerSelection === 'rock') {
                 playerScore++;
@@ -42,9 +39,8 @@ function playRound(playerSelection, computerSelection) {
             } else if (computerSelection === 'scissors') {
                 computerScore++;
                 return 'I picked paper. You lose!';
-            } else {
-
             }
+
     } else if (playerSelection.toLowerCase() === 'scissors') {
             if (computerSelection === 'rock') {
                 computerScore++;
@@ -56,56 +52,24 @@ function playRound(playerSelection, computerSelection) {
                 computerScore++;
                 playerScore++;
                 return 'I picked scissors. It\'s a tie!';
-            } else {
-
             }
         
-    } else {
-
     }
 }
 
-function game(choice) {
-    function choice1 () {
-        input = prompt('Rock, paper, or scissors?');
-        return console.log(playRound(input, getComputerChoice()));
+
+function game() {
+    for (let i = 1; i <= 5; i++) {
+        input = prompt(`Round ${i}: Rock, paper, or scissors?`);
+        console.log(playRound(input, getComputerChoice()));
     }
 
-    choice1();
-
-    function choice2() {
-        input = prompt('Rock, paper, or scissors?');
-        return console.log(playRound(input, getComputerChoice()));
-    }
-
-    choice2();
-
-    function choice3() {
-        input = prompt('Rock, paper, or scissors?');
-        return console.log(playRound(input, getComputerChoice()));
-    }
-
-    choice3();
-
-    function choice4() {
-        input = prompt('Rock, paper, or scissors?');
-        return console.log(playRound(input, getComputerChoice()));
-    }
-
-    choice4();
-
-    function choice5() {
-        input = prompt('Rock, paper, or scissors?');
-        return console.log(playRound(input, getComputerChoice()));
-    }
-
-    choice5();
-}
-
-(game());
 
     if (playerScore > computerScore) {
         console.log('Congrats! You win the game!');
     } else {
         console.log('Sorry, you lose!');
     }
+}
+
+game();
