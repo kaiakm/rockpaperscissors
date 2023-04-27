@@ -61,29 +61,59 @@ rockBtn = document.querySelector('#rock');
 paperBtn = document.querySelector('#paper');
 scissorsBtn = document.querySelector('#scissors');
 results = document.querySelector('#results');
+score = document.querySelector('#score');
+winner = document.querySelector('#winner');
 
 
 function game() {
-    rockBtn.addEventListener('click', () => {
-    results.textContent = (playRound('rock', getComputerChoice()));
-    });
+    let round = 1;
 
-    paperBtn.addEventListener('click', () => {
-    results.textContent = (playRound('paper', getComputerChoice()));
-    });
-
-        
-    scissorsBtn.addEventListener('click', () => {
-    results.textContent = (playRound('scissors', getComputerChoice()));
-    });
-        
-
-
-    if (playerScore > computerScore) {
-        console.log('Congrats! You win the game!');
-    } else {
-        console.log('Sorry, you lose!');
+    function playGame(){
+        if (round <= 5) {
+            function onRockClick() {
+                results.textContent = (playRound('rock', getComputerChoice()));
+                round++;
+                rockBtn.removeEventListener('click', onRockClick);
+                playGame();
+            }
+    
+            function onPaperClick() {
+                results.textContent = (playRound('paper', getComputerChoice()));
+                round++;
+                paperBtn.removeEventListener('click', onPaperClick);
+                playGame();
+            }
+    
+            function onScissorsClick() {
+                results.textContent = (playRound('scissors', getComputerChoice()));
+                round++;
+                scissorsBtn.removeEventListener('click', onScissorsClick);
+                playGame();
+            }
+    
+            rockBtn.addEventListener('click', onRockClick);
+            paperBtn.addEventListener('click', onPaperClick);
+            scissorsBtn.addEventListener('click', onScissorsClick);
+        } else {
+            if (playerScore > computerScore) {
+                winner.textContent = 'You won the game!';
+            } else if (computerScore > playerScore) {
+                winner.textContent = 'I won the game!';
+            } else {
+                winner.textContent = 'It\'s a tie!';
+            }
+        }
+    
+        updateScore();
     }
-}
+    
+
+    function updateScore() {
+        score.textContent = `player: ${playerScore} - computer ${computerScore}`;
+    }
+
+    playGame();
+};
+
 
 game();
