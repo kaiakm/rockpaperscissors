@@ -1,10 +1,10 @@
-function getComputerChoice (max) {
-    let result = Math.floor(Math.random() * max);
+function getComputerChoice () {
+    let result = Math.floor(Math.random() * 3);
 
     if (result === 0) {
-        return "rock";
+        return 'rock';
     } else if ( result === 1) {
-        return "paper";
+        return 'paper';
     } else {
         return "scissors";
     };
@@ -14,13 +14,13 @@ function getHumanChoice () {
     let input = prompt('Rock, paper, or scissors?');
 
     if (input.toLowerCase() === 'rock') {
-        console.log("rock");
+        return 'rock';
     } else if (input.toLowerCase() === 'paper') {
-        console.log("paper");
+        return 'paper';
     } else if (input.toLowerCase() === 'scissors') {
-        console.log("scissors");
+        return 'scissors';
     } else {
-        console.log("Invalid. Try again!");
+        return 'Invalid!';
     };
 }
 
